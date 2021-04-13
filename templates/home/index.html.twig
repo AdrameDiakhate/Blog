@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue dans mon blog
+{% endblock %}
+
+{% block body %}
+	<h4 style="position:center;">Bienvenue dans la page d'accueil</h4>
+	<div class="container">
+		<div class="row">
+			{% for post in posts %}
+				<div class="card col-md-4" style="width: 20rem;">
+					<img src="https://via.placeholder.com/100" class="card-img-top" alt="{{ post.image }}">
+					<div class="card-body">
+						<h5 class="card-title">{{ post.title }}</h5>
+						<p class="card-text">{{ post.content }}</p>
+						<a href="/show/{{ post.id }}" class="btn btn-primary">En savoir plus</a>
+						<p>
+							Ecrit le
+							{{ post.createdAt|date("d:m:Y") }}
+							à
+							{{ post.createdAt|date("H:i:s") }}
+						</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

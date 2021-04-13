@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<div class="container">
+		<div class="card-body">
+			<img src="https://via.placeholder.com/100" class="card-img-top" alt="Single post">
+			<h5 class="card-title">{{ post.title }}</h5>
+			<p class="card-text">{{ post.content }}</p>
+			<p>
+				Ecrit le
+				{{ post.createdAt|date("d:m:Y") }}
+				à
+				{{ post.createdAt|date("H:i:s") }}
+			</p>
+		</div>
+	</div>
+{% endblock %}
