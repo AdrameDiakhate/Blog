@@ -10,9 +10,6 @@ security:
             anonymous: true
             lazy: true
             provider: users_in_memory
-            guard:
-                authenticators:
-                    - App\Security\LoginAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout

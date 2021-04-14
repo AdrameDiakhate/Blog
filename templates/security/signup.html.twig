@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+
+<div class="container">
+<h4>Bienvenue sur la page d'inscription</h4>
+
+{{ form_start(forms) }}
+
+{{ form_row(forms.first_name, {attr:{'label':'Prénom',class: 'form-control',placeholder:'Entrer votre prénom'}}) }}
+{{ form_row(forms.last_name, {attr:{'label':'Nom',class:'form-control',placeholder:'Entrer votre nom'}}) }}
+{{ form_row(forms.email, {attr:{'label':'Email',class:'form-control',placeholder:'Entrer votre email'}}) }}
+{{ form_row(forms.username, {attr:{'label':'Nom d\'utilisateur',class:'form-control',placeholder:'Entrer votre nom d\'utilisateur'}}) }}
+{{ form_row(forms.password, {attr:{'label':'Mot de passe',class:'form-control',placeholder:'Entrer votre mot de passe'}}) }}
+{{ form_row(forms.confirm_password, {attr:{'label':'Confirmation',class:'form-control',placeholder:'Confirmer votre mot de passe'}}) }}
+
+<button type="button" class="btn btn-primary">Inscription</button>
+
+
+{{ form_end(forms)}}
+</div>
+
+{% endblock %}

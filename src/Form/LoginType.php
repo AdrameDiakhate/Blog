@@ -17,6 +17,7 @@ class LoginType extends AbstractType
             ->add('email')
             ->add('username')
             ->add('password')
+            ->add('confirm_password')
         ;
     }
 

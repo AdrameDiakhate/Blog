@@ -17,7 +17,7 @@ class Articles extends Fixture
 
         for ($i = 0; $i < 20; $i++) {
             $category = new Category();
-            //$category->setName($faker->text);
+            $category->setName($faker->text);
 
             $user = new User();
             $user->setFirstName($faker->firstName)
