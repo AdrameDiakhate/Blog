@@ -1,5 +1,9 @@
+# config/packages/security.yaml
 security:
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    # ...
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
     providers:
         users_in_memory: { memory: null }
     firewalls:
@@ -9,9 +13,16 @@ security:
         main:
             anonymous: true
             lazy: true
-            provider: users_in_memory
+            guard:
+                authenticators:
+                    - App\Security\AuthentificationAuthenticator
             logout:
                 path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
+
+
+
                 # where to redirect after logout
                 # target: app_any_route
 

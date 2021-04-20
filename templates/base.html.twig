@@ -30,16 +30,25 @@
 							<span class="sr-only">(current)</span>
 						</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#"></a>
+					{% if app.user %}
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/signup">Devenir membre</a>
+						<li class="nav-item">
+						<a class="nav-link" href="{{ path('logout') }}">
+							Déconnexion</a>
 					</li>
+				{% else %}
 					<li class="nav-item">
-						<a class="nav-link" href="#">
+						<a class="nav-link" href="{{ path('signup') }}">Devenir membre</a>
+					</li>
+						<li class="nav-item">
+						<a class="nav-link" href="{{ path('login') }}">
+							Connexion</a>
+					</li>
+						<li class="nav-item">
+						<a class="nav-link" href="{{ path('about') }}">
 							A propos</a>
 					</li>
+				{% endif %}
 				</ul>
 			</div>
 		</nav>

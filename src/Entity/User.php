@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -21,21 +22,28 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="string", length=255)
      */
     private $first_name;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="string", length=255)
      */
     private $last_name;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Email(
+     *     message = "Cet email '{{ value }}' n'est pas valide."
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $email;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="string", length=255)
      */
     private $username;
@@ -52,11 +60,25 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 8,
+     *      max = 20,
+     *      minMessage = "Votre mot de passe doit dépasser {{ limit }} caractères",
+     *      maxMessage = "Votre mot de passe doit ne peut pas dépasser {{ limit }} caractères"
+     * )
      */
     private $password;
 
+    /*
+    *@Assert\NotBlank
+    *@Assert\isEqualTo($password)
+    */
     public $confirm_password;
 
+    public function __toString(){
+        return $this->first_name.' '.$this->last_name;
+    }
     public function __construct()
     {
         $this->posts = new ArrayCollection();
